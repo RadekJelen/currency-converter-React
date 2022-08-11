@@ -1,4 +1,5 @@
 import Button from "./Button";
+import Converter from "./Converter";
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
         <h1>Kalkulator walutowy</h1>
       </header>
 
-      <main className="converter">
+      <Converter>
         <form>
           <p>
             <label>
@@ -35,7 +36,7 @@ function App() {
             Kursy pochodzą ze strony Narodowego Banku Polskiego (Tabela z dnia 2022-06-27).
           </p>
         </form>
-      </main>
+      </Converter>
       
       <footer>
         <p> To też sam zrobiłem, serio &#128516;</p>
