@@ -1,9 +1,7 @@
 import "./style.css"
 
 const Button = () => (
-  <p>
-    <button className="button">Przelicz!</button>
-  </p>
+  <button className="button">Przelicz!</button>
 );
 
 export default Button
