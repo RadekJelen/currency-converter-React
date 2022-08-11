@@ -8,8 +8,14 @@ const Converter = () => (
       <p>
         <label>
           <span className="converter__labelText">Mam*:</span>
-          <input className="converter__field" type="number" step="0.01" min="1"
-            placeholder="wpisz kwotę w PLN" required autoFocus />
+          <input className="converter__field"
+            type="number"
+            step="0.01"
+            min="1"
+            placeholder="wpisz kwotę w PLN"
+            required
+            autoFocus
+          />
         </label>
       </p>
       <p>
