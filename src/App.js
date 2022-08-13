@@ -1,4 +1,3 @@
-
 import Converter from "./Converter";
 
 function App() {
@@ -9,7 +8,7 @@ function App() {
       </header>
       <Converter />
       <footer>
-        <p> To też sam zrobiłem, serio &#128516;</p>
+        <p>To też sam zrobiłem, serio &#128516;</p>
       </footer>
     </>
   );
