@@ -1,4 +1,4 @@
-import Converter from "./Converter";
+import Form from "./Form";
 
 function App() {
   return (
@@ -6,7 +6,9 @@ function App() {
       <header>
         <h1>Kalkulator walutowy</h1>
       </header>
-      <Converter />
+      <main>
+        <Form />
+      </main>
       <footer>
         <p>To też sam zrobiłem, serio &#128516;</p>
       </footer>

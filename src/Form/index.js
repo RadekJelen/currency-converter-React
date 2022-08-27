@@ -1,9 +1,8 @@
-import "./style.css"
-import Button from "../Button";
-import Result from "../Result";
+import "./style.css";
+import Result from "./Result";
 import { useState } from "react";
 
-const Converter = () => {
+const Form = () => {
   const currencies = [
     { short: "EUR", name: "Euro", rate: 4.6965, },
     { short: "USD", name: "Dolar Amerykański", rate: 4.4369, },
@@ -30,11 +29,10 @@ const Converter = () => {
   };
 
   return (
-    <main className="converter">
-      <form onSubmit={onFormSubmit}>
-        <label className="converter__label">
-          <span className="converter__labelText">Mam*:</span>
-          <input className="converter__field"
+      <form className="form" onSubmit={onFormSubmit}>
+        <label className="form__label">
+          <span className="form__labelText">Mam*:</span>
+          <input className="form__field"
             type="number"
             step="0.01"
             min="1"
@@ -45,9 +43,9 @@ const Converter = () => {
             autoFocus
           />
         </label>
-        <label className="converter__label">
-          <span className="converter__labelText">Waluty:</span>
-          <select className="converter__field"
+        <label className="form__label">
+          <span className="form__labelText">Waluty:</span>
+          <select className="form__field"
             value={currency}
             onChange={({ target }) => setCurrency(target.value)}
           >
@@ -61,11 +59,14 @@ const Converter = () => {
             ))}
           </select>
         </label>
-        <Button />
+        <button className="form__button">Przelicz!</button>
         <Result result={result} />
+        <p className="form__textInfo">
+          * - pole wymagane.<br />
+          Kursy pochodzą ze strony Narodowego Banku Polskiego (Tabela z dnia 2022-06-27).
+        </p>
       </form>
-    </main>
   );
 };
 
-export default Converter
+export default Form;

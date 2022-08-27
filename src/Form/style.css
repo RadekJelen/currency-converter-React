@@ -1,4 +1,4 @@
-.converter {
+.form {
   background-color: hsl(210, 24%, 25%);
   padding: 10px 50px;
   margin: 0px 10px;
@@ -12,12 +12,12 @@
   box-shadow: 0px 10px 33px 3px rgba(33, 25, 25, 0.56);
 }
 
-.converter__label {
+.form__label {
   display: block;
   margin: 30px 10px;
 }
 
-.converter__labelText {
+.form__labelText {
   width: 100px;
   display: inline-block;
   margin-right: 5px;
@@ -25,10 +25,35 @@
   font-weight: bold;
 }
 
-.converter__field {
+.form__field {
   border: 1px solid #ccc;
   padding: 10px;
   width: 100%;
   max-width: 300px;
   border-radius: 5px;
+}
+
+.form__button {
+  border-width: 5px;
+  background-color: hsl(0, 0%, 100%);
+  margin: 10px 0;
+  box-shadow: 0px 10px 33px 3px rgba(33, 25, 25, 0.56);
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 55px;
+  font-size: large;
+  border-image-slice: 1;
+  border-image-source:
+    linear-gradient(#ff512f,
+      #dd2476,
+      #1C64FF);
+}
+
+.form__button:hover {
+  background-color: hsl(0, 0%, 95%);
+}
+
+.form__textInfo {
+  font-size: x-small;
+  line-height: 1.5;
 }
