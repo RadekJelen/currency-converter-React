@@ -4,13 +4,13 @@ function App() {
   return (
     <>
       <header>
-        <h1>Kalkulator walutowy</h1>
+        <h1 className="header">Kalkulator walutowy</h1>
       </header>
       <main>
         <Form />
       </main>
       <footer>
-        <p>To też sam zrobiłem, serio &#128516;</p>
+        <p>Made by RJ &#128516;</p>
       </footer>
     </>
   );
