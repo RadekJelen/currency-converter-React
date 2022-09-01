@@ -1,5 +1,6 @@
 import "./style.css";
 import Result from "./Result";
+import Clock from "./Clock";
 import { useState } from "react";
 
 const Form = () => {
@@ -30,6 +31,7 @@ const Form = () => {
 
   return (
       <form className="form" onSubmit={onFormSubmit}>
+        <Clock />
         <label className="form__label">
           <span className="form__labelText">Mam*:</span>
           <input className="form__field"
