@@ -1,18 +1,21 @@
-# 💱 Currency-Converter with React
- 💰 money-money-money-money-money 💰<br>
-
+# 💱 Currency-Converter - React
+" Money, money, money<br>
+Must be funny " <br>
+-ABBA 💰<br>
 <br>
 
-
 ## 📝 Description
-
-A currency calculator that convert PLN to currently 3 currencies **( EURO, USD, GBP )** of your choice. 💶💵💷
+This is a simple currency converter. Created with react technology. A currency calculator, convert PLN to currently 3 currencies **( EURO, USD, GBP )** of your choice. The project also displays the date and the user's current time. 
 
 <br>
 
 ## 🕹️  Demo
-
 You can find the demo [here](https://radekjelen.github.io/currency-converter-React/)
+
+<br>
+
+## 👀 Preview 
+![GIF how to use this app](/src/previewGif.gif)
 
 <br>
 
