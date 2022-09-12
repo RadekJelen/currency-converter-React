@@ -5,26 +5,26 @@ const Clock = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   useEffect(() => {
-    setInterval(() => {
+    const intervalId = setInterval(() => {
       setCurrentDate(new Date());
     }, 1000);
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
 
   return (
     <p className="clock">
       Dzisiaj jest
       {" "}
-      {currentDate.toLocaleString(
-        "pl-PL", { weekday: "long", day: "numeric", }
-      )}
-      &nbsp;
-      {currentDate.toLocaleString(
-        "pl-PL", { month: "long", }
-      )}
-      &nbsp;
-      {currentDate.toLocaleString(
-        "pl-PL", { hour: "numeric", minute: "numeric", second: "numeric" }
-      )}
+      {currentDate.toLocaleString( undefined, {
+      weekday: "long", 
+      day: "numeric", 
+      month: "long", 
+      hour: "numeric", 
+      minute: "numeric", 
+      second: "numeric" 
+    })}
     </p>
   );
 };
