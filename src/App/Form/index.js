@@ -1,7 +1,7 @@
-import "./style.css";
 import Result from "./Result";
 import Clock from "./Clock";
 import { useState } from "react";
+import { StyledForm, StyledLabel, StyledSpan, StyledInput, StyledButton, StyledParagraf } from "./styled"
 
 const Form = () => {
   const currencies = [
@@ -30,11 +30,11 @@ const Form = () => {
   };
 
   return (
-      <form className="form" onSubmit={onFormSubmit}>
+      <StyledForm onSubmit={onFormSubmit}>
         <Clock />
-        <label className="form__label">
-          <span className="form__labelText">Mam*:</span>
-          <input className="form__field"
+        <StyledLabel>
+          <StyledSpan>Mam*:</StyledSpan>
+          <StyledInput
             type="number"
             step="0.01"
             min="1"
@@ -44,10 +44,11 @@ const Form = () => {
             required
             autoFocus
           />
-        </label>
-        <label className="form__label">
-          <span className="form__labelText">Waluty:</span>
-          <select className="form__field"
+        </StyledLabel>
+        <StyledLabel>
+          <StyledSpan>Waluty:</StyledSpan>
+          <StyledInput 
+            as="select"
             value={currency}
             onChange={({ target }) => setCurrency(target.value)}
           >
@@ -59,15 +60,15 @@ const Form = () => {
                 {currency.name}
               </option>
             ))}
-          </select>
-        </label>
-        <button className="form__button">Przelicz!</button>
+          </StyledInput>
+        </StyledLabel>
+        <StyledButton>Przelicz!</StyledButton>
         <Result result={result} />
-        <p className="form__textInfo">
+        <StyledParagraf>
           * - pole wymagane.<br />
           Kursy pochodzą ze strony Narodowego Banku Polskiego (Tabela z dnia 2022-06-27).
-        </p>
-      </form>
+        </StyledParagraf>
+      </StyledForm>
   );
 };
 

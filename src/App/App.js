@@ -1,10 +1,12 @@
 import Form from "./Form";
+import { StyledHeader } from "./styled";
+
 
 function App() {
   return (
     <>
       <header>
-        <h1 className="header">Kalkulator walutowy</h1>
+        <StyledHeader>Kalkulator walutowy</StyledHeader>
       </header>
       <main>
         <Form />
