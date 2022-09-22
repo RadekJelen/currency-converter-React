@@ -1,26 +1,23 @@
 import Result from "./Result";
 import Clock from "./Clock";
 import { useState } from "react";
-import { StyledForm, StyledLabel, StyledSpan, StyledInput, StyledButton, StyledParagraf } from "./styled"
+import { useRatesData } from "./useRatesData";
+import { StyledForm, StyledLabel, StyledSpan, StyledInput, StyledButton, StyledParagraf, StyledLoader, StyledLoaderDiv, StyledErrorImage, StyledLoaderSpan } from "./styled";
+import warning from "./warning-sign.png";
 
 const Form = () => {
-  const currencies = [
-    { short: "EUR", name: "Euro", rate: 4.6965, },
-    { short: "USD", name: "Dolar Amerykański", rate: 4.4369, },
-    { short: "GBP", name: "Funt Brytyjski", rate: 5.4655, }
-  ];
-
-  const [amount, setAount] = useState("");
-  const [currency, setCurrency] = useState(currencies[0].short);
+  const ratesData = useRatesData();
   const [result, setResult] = useState();
+  const [amount, setAount] = useState("");
+  const [currency, setCurrency] = useState("EUR");
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    calculateResult(currency, amount);
+    calculateResult(amount, currency);
   };
 
-  const calculateResult = (currency, amount) => {
-    const rate = currencies.find(({ short }) => short === currency).rate;
+  const calculateResult = (amount, currency) => {
+    const rate = ratesData.rates[currency];
 
     setResult({
       sourceAmount: +amount,
@@ -30,45 +27,61 @@ const Form = () => {
   };
 
   return (
-      <StyledForm onSubmit={onFormSubmit}>
-        <Clock />
-        <StyledLabel>
-          <StyledSpan>Mam*:</StyledSpan>
-          <StyledInput
-            type="number"
-            step="0.01"
-            min="1"
-            value={amount}
-            onChange={({ target }) => setAount(target.value)}
-            placeholder="wpisz kwotę w PLN"
-            required
-            autoFocus
-          />
-        </StyledLabel>
-        <StyledLabel>
-          <StyledSpan>Waluty:</StyledSpan>
-          <StyledInput 
-            as="select"
-            value={currency}
-            onChange={({ target }) => setCurrency(target.value)}
-          >
-            {currencies.map(currency => (
-              <option
-                key={currency.short}
-                value={currency.short}
-              >
-                {currency.name}
-              </option>
-            ))}
-          </StyledInput>
-        </StyledLabel>
-        <StyledButton>Przelicz!</StyledButton>
-        <Result result={result} />
-        <StyledParagraf>
-          * - pole wymagane.<br />
-          Kursy pochodzą ze strony Narodowego Banku Polskiego (Tabela z dnia 2022-06-27).
-        </StyledParagraf>
-      </StyledForm>
+    <StyledForm onSubmit={onFormSubmit}>
+      <Clock />
+      {ratesData.state === "loading" && (
+        <StyledLoaderDiv>
+          <StyledLoaderSpan>Trwa pobieranie danych... może to potrwać kilka sekund</StyledLoaderSpan>
+          <StyledLoader />
+        </StyledLoaderDiv>
+      )}
+
+      {ratesData.state === "error" && (
+        <StyledLoaderDiv>
+          <StyledLoaderSpan converted>Coś poszło nie tak... spróbuj ponownie za chwilę</StyledLoaderSpan>
+          <StyledErrorImage src={warning} />
+        </StyledLoaderDiv>
+      )}
+      
+      {ratesData.state === "success" && (
+        <>
+          <StyledLabel>
+            <StyledSpan>Mam*:</StyledSpan>
+            <StyledInput
+              type="number"
+              step="0.01"
+              min="1"
+              value={amount}
+              onChange={({ target }) => setAount(target.value)}
+              placeholder="wpisz kwotę w PLN"
+              required
+              autoFocus
+            />
+          </StyledLabel>
+          <StyledLabel>
+            <StyledSpan>Waluty:</StyledSpan>
+            <StyledInput
+              as="select"
+              value={currency}
+              onChange={({ target }) => setCurrency(target.value)}
+            >
+              {Object.keys(ratesData.rates).map(currency => (
+                <option key={currency} value={currency}>
+                  {currency}
+                </option>
+              ))}
+            </StyledInput>
+          </StyledLabel>
+          <StyledButton>Przelicz!</StyledButton>
+          <Result result={result} />
+          <StyledParagraf>
+            * - pole wymagane.<br />
+            Kursy walut pochodzą z Europejskiego Banku Centralnego.<br />
+            Aktualne na dzień <strong>{ratesData.date}</strong>
+          </StyledParagraf>
+        </>
+      )}
+    </StyledForm>
   );
 };
 
