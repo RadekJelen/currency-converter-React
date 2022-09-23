@@ -5,7 +5,12 @@ Must be funny " <br>
 <br>
 
 ## 📝 Description
-This is a simple currency converter. Created with react technology. A currency calculator, convert PLN to currently 3 currencies **( EURO, USD, GBP )** of your choice. The project also displays the date and the user's current time. 
+This is a simple currency converter. Created with react technology. A currency calculator, convert PLN to currently 3 currencies **( EURO, USD, GBP )** of your choice. 
+
+The project also displays the date and the user's current time.
+
+Now you can convert PLN to any currency you want.
+Currency rates are taken from external API every time you open or reload the website.
 
 <br>
 
@@ -21,11 +26,14 @@ You can find the demo [here](https://radekjelen.github.io/currency-converter-Rea
 
 ## 💻 Tech Stack:
 - HTML
+- Markdown
 - CSS (Grid, Flex, media queries)
 - JavaScript (ES6+)
 - Create React App
-- BEM
-- Markdown
+- Promise, async / await
+- React Hooks
+- Styled Components
+
 
 <br>
 
